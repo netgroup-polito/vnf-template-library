@@ -6,9 +6,3 @@
 *.DS_Store
 .DS_Store
 libreria.db
-
-<<<<<<< HEAD
-=======
-Orchestrator/FrogOrchestrator.log
->>>>>>> stable_new_backend
-Orchestrator/.metadata/
