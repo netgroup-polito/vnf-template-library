@@ -18,7 +18,7 @@ class Template(object):
         self.ephemeral_file_system_size = ephemeral_file_system_size
         self.swap_disk_size = swap_disk_size
         self.cpu_requirements = cpu_requirements
-        self.ports = ports
+        self.ports = ports or []
                  
     def parseDict(self, template_dict):
         if 'name' in template_dict:
