@@ -53,13 +53,13 @@ class Template(object):
         if self.uri is not None:
             template_dict['uri'] = self.uri
         if self.memory_size is not None:    
-            template_dict['memory-size'] = self.memorySize
+            template_dict['memory-size'] = self.memory_size
         if self.root_file_system_size is not None:
-            template_dict['root-file-system-size'] = self.rootFileSystemSize
+            template_dict['root-file-system-size'] = self.root_file_system_size
         if self.ephemeral_file_system_size is not None:
-            template_dict['ephemeral-file-system-size'] = self.ephemeralFileSystemSize
+            template_dict['ephemeral-file-system-size'] = self.ephemeral_file_system_size
         if self.swap_disk_size is not None:
-            template_dict['swap-disk-size'] = self.swapDiskSize
+            template_dict['swap-disk-size'] = self.swap_disk_size
         if self.expandable is not None:
             template_dict['expandable'] = self.expandable
         template_dict['CPUrequirements'] = self.cpu_requirements.getDict()
