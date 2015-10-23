@@ -69,7 +69,15 @@ class Template(object):
         if ports_dict:
             template_dict['ports'] = ports_dict
         return template_dict
-        
+    
+    def checkExpansion(self):
+        """
+        return True if the VNF is a new graph
+        """
+        if self.expandable == True:
+            return True
+        return False
+    
 class CPURequirement(object):
     def __init__(self, platform_type = None, socket = None):
         self.platform_type = platform_type
