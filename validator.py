@@ -2,19 +2,31 @@
 Created on Sep 29, 2014
 
 @author: fabiomignini
+@author: stefanopetrangeli
+
 '''
 import logging
+import json
+import inspect
+import os
 
 from jsonschema import validate, ValidationError
 
 from .exception import TemplateValidationError
 
 class ValidateTemplate(object):
-
+    
+    schema_name = 'schema.json'
+        
     def validate(self, template):
-        schema={"$schema":"http://json-schema.org/draft-04/schema#","type":"object","properties":{"name":{"type":"string"},"expandable":{"type":"boolean"},"vnf-type":{"type":"string"},"uri":{"type":"string"},"memory-size":{"type":"number"},"root-file-system-size":{"type":"number"},"ephemeral-file-system-size":{"type":"number"},"swap-disk-size":{"type":"number"},"CPUrequirements":{"type":"object","properties":{"platformType":{"type":"string"},"socket":{"type":"array","items":{"type":"object","properties":{"coreNumbers":{"type":"number"}}}}}},"ports":{"type":"array","items":{"type":"object","properties":{"position":{"type":"string","pattern": "^(([0-9]|[1-9][0-9]*)([-](([1-9]?[0-9]*)|N))?)$"},"label":{"type":"string"},"min":{"type":"string"},"ipv4-config":{"type":"string"},"ipv6-config":{"type":"string"},"name":{"type":"string"}},"required":["position","label","min","name"],"additionalProperties":False}}},"required":["memory-size","CPUrequirements","ports"],"additionalProperties":False}
+        schema = self.get_schema()
         try:
             validate(template, schema)
         except ValidationError as err:
-            logging.debug(err.message)
+            logging.info(err.message)
             raise TemplateValidationError(err.message)
+        
+    def get_schema(self):
+        base_folder = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0]))
+        fd = open(base_folder+'/'+self.schema_name, 'r')
+        return json.loads(fd.read())
