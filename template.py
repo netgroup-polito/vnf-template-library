@@ -7,12 +7,13 @@ Created on Oct 2, 2014
 class Template(object):
     def __init__(self, name = None, expandable = False, vnf_type = None,
                 uri = None, memory_size = 0, root_file_system_size = 0, 
-                ephemeral_file_system_size = 0, swap_disk_size = 0,
+                ephemeral_file_system_size = 0, swap_disk_size = 0, uri_type = None,
                 cpu_requirements = None, ports = None):
         self.name = name
         self.expandable = expandable
         self.vnf_type = vnf_type
         self.uri = uri
+        self.uri_type = uri_type
         self.memory_size = memory_size
         self.root_file_system_size = root_file_system_size
         self.ephemeral_file_system_size = ephemeral_file_system_size
@@ -29,6 +30,8 @@ class Template(object):
             self.vnf_type = template_dict['vnf-type']
         if 'uri' in template_dict:
             self.uri = template_dict['uri']
+        if 'uri-type' in template_dict:
+            self.uri_type = template_dict['uri-type']
         self.memory_size = template_dict['memory-size']
         if 'root-file-system-size' in template_dict:
             self.root_file_system_size = template_dict['root-file-system-size']
@@ -52,6 +55,8 @@ class Template(object):
             template_dict['vnf-type'] = self.vnf_type
         if self.uri is not None:
             template_dict['uri'] = self.uri
+        if self.uri_type is not None:
+            template_dict['uri-type'] = self.uri_type
         if self.memory_size is not None:    
             template_dict['memory-size'] = self.memory_size
         if self.root_file_system_size is not None:

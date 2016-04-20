@@ -11,6 +11,12 @@
     "vnf-type": {
       "type": "string"
     },
+    "uri-type": {
+      "enum": [
+        "file",
+        "glance"
+      ]
+    },
     "uri": {
       "type": "string"
     },
