@@ -82,6 +82,21 @@ class Template(object):
         if self.expandable == True:
             return True
         return False
+
+
+    def getVnfPortByVirtualName(self, virtual_port_name):
+        """
+
+        :param virtual_port_name:
+        :type virtual_port_name: str
+        :return:
+        """
+
+        for port in self.ports:
+            index = int(virtual_port_name.replace(port.name, ""))
+            if index >= port.position.split('-')[0]:
+                if port.position.split('-')[1] == 'N' or index <= int(port.position.split('-')[1]):
+                    return port.label + ':' + str(index)
     
 class CPURequirement(object):
     def __init__(self, platform_type = None, socket = None):
@@ -101,6 +116,7 @@ class CPURequirement(object):
         if self.socket is not None:             
             cpu_requirements['socket'] = self.socket
         return cpu_requirements
+
     
 class Port(object):
     def __init__(self, position = None, label = None, minimum = None, ipv4_config = None, ipv6_config = None, name = None):
