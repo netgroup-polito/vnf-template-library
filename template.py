@@ -94,7 +94,7 @@ class Template(object):
 
         for port in self.ports:
             index = int(virtual_port_name.replace(port.name, ""))
-            if index >= port.position.split('-')[0]:
+            if index >= int(port.position.split('-')[0]):
                 if port.position.split('-')[1] == 'N' or index <= int(port.position.split('-')[1]):
                     return port.label + ':' + str(index)
     
