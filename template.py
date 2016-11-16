@@ -119,13 +119,14 @@ class CPURequirement(object):
 
     
 class Port(object):
-    def __init__(self, position = None, label = None, minimum = None, ipv4_config = None, ipv6_config = None, name = None):
+    def __init__(self, position = None, label = None, minimum = None, ipv4_config = None, ipv6_config = None, name = None, technology = None):
         self.position = position
         self.label = label
         self.min = minimum
         self.ipv4_config = ipv4_config
         self.ipv6_config = ipv6_config
         self.name = name
+        self.technology = technology
     
     def parseDict(self, port_dict):
         self.position = port_dict['position']
@@ -136,6 +137,8 @@ class Port(object):
         if 'ipv6-config' in port_dict:
             self.ipv6_config = port_dict['ipv6-config']
         self.name = port_dict['name']
+        if 'technology' in port_dict:
+            self.technology = port_dict['technology']
     
     def getDict(self):
         port_dict = {}
@@ -151,4 +154,6 @@ class Port(object):
             port_dict['ipv4-config'] = self.ipv4_config
         if self.ipv6_config is not None:            
             port_dict['ipv6-config'] = self.ipv6_config
+        if self.technology is not None:
+            port_dict['technology'] = self.technology
         return port_dict
