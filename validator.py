@@ -1,10 +1,11 @@
-'''
+"""
 Created on Sep 29, 2014
 
 @author: fabiomignini
 @author: stefanopetrangeli
 
-'''
+"""
+
 import logging
 import json
 import inspect
@@ -13,6 +14,7 @@ import os
 from jsonschema import validate, ValidationError
 
 from exception import TemplateValidationError
+
 
 class ValidateTemplate(object):
     

@@ -5,6 +5,9 @@
         "name": {
             "type": "string"
         },
+        "functional-capability": {
+            "type": "string"
+        },
         "expandable": {
             "type": "boolean"
         },

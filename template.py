@@ -1,15 +1,16 @@
-'''
+"""
 Created on Oct 2, 2014
 
 @author: fabiomignini
-'''
+"""
+
 
 class Template(object):
-    def __init__(self, name = None, expandable = False, vnf_type = None,
-                uri = None, memory_size = 0, root_file_system_size = 0, 
-                ephemeral_file_system_size = 0, swap_disk_size = 0, uri_type = None,
-                cpu_requirements = None, ports = None):
+    def __init__(self, name=None, functional_capability=False, expandable=False, vnf_type=None, uri=None, memory_size=0,
+                 root_file_system_size=0, ephemeral_file_system_size=0, swap_disk_size=0, uri_type=None,
+                 cpu_requirements=None, ports=None):
         self.name = name
+        self.functional_capability = functional_capability
         self.expandable = expandable
         self.vnf_type = vnf_type
         self.uri = uri
@@ -24,6 +25,8 @@ class Template(object):
     def parseDict(self, template_dict):
         if 'name' in template_dict:
             self.name = template_dict['name']
+        if 'functional-capability' in template_dict:
+            self.functional_capability = template_dict['functional-capability']
         if 'expandable' in template_dict:
             self.expandable = template_dict['expandable']
         if 'vnf-type' in template_dict:
@@ -51,6 +54,8 @@ class Template(object):
         template_dict = {}
         if self.name is not None:
             template_dict['name'] = self.name
+        if self.functional_capability is not None:
+            template_dict['functional-capability'] = self.functional_capability
         if self.vnf_type is not None:            
             template_dict['vnf-type'] = self.vnf_type
         if self.uri is not None:
@@ -97,7 +102,8 @@ class Template(object):
             if index >= int(port.position.split('-')[0]):
                 if port.position.split('-')[1] == 'N' or index <= int(port.position.split('-')[1]):
                     return port.label + ':' + str(index)
-    
+
+
 class CPURequirement(object):
     def __init__(self, platform_type = None, socket = None):
         self.platform_type = platform_type
