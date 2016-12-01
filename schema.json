@@ -22,8 +22,9 @@
         },
         "uri-type": {
             "enum": [
-                "file",
-                "glance"
+                "local-file",
+                "remote-file",
+                "docker-registry"
             ]
         },
         "uri": {
