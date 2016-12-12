@@ -105,6 +105,8 @@
     },
     "required": [
         "vnf-type",
+        "functional-capability",
+        "uri-type",
         "memory-size",
         "CPUrequirements",
         "ports"
