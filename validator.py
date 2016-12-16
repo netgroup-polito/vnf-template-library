@@ -13,7 +13,7 @@ import os
 
 from jsonschema import validate, ValidationError
 
-from exception import TemplateValidationError
+from .exception import TemplateValidationError
 
 
 class ValidateTemplate(object):
