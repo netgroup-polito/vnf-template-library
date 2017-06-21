@@ -20,14 +20,17 @@
                 "onos-application"
             ]
         },
-        "uri-type": {
+        "uri-image-type": {
             "enum": [
                 "local-file",
                 "remote-file",
                 "docker-registry"
             ]
         },
-        "uri": {
+        "uri-image": {
+            "type": "string"
+        },
+        "uri-yang": {
             "type": "string"
         },
         "memory-size": {
@@ -106,7 +109,7 @@
     "required": [
         "vnf-type",
         "functional-capability",
-        "uri-type",
+        "uri-image-type",
         "memory-size",
         "CPUrequirements",
         "ports"

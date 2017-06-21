@@ -6,15 +6,16 @@ Created on Oct 2, 2014
 
 
 class Template(object):
-    def __init__(self, name=None, functional_capability=False, expandable=False, vnf_type=None, uri=None, memory_size=0,
-                 root_file_system_size=0, ephemeral_file_system_size=0, swap_disk_size=0, uri_type=None,
+    def __init__(self, name=None, functional_capability=False, expandable=False, vnf_type=None, uri_image=None, uri_yang=None, memory_size=0,
+                 root_file_system_size=0, ephemeral_file_system_size=0, swap_disk_size=0, uri_image_type=None,
                  cpu_requirements=None, ports=None):
         self.name = name
         self.functional_capability = functional_capability
         self.expandable = expandable
         self.vnf_type = vnf_type
-        self.uri = uri
-        self.uri_type = uri_type
+        self.uri_image = uri_image
+        self.uri_image_type = uri_image_type
+        self.uri_yang = uri_yang
         self.memory_size = memory_size
         self.root_file_system_size = root_file_system_size
         self.ephemeral_file_system_size = ephemeral_file_system_size
@@ -31,10 +32,12 @@ class Template(object):
             self.expandable = template_dict['expandable']
         if 'vnf-type' in template_dict:
             self.vnf_type = template_dict['vnf-type']
-        if 'uri' in template_dict:
-            self.uri = template_dict['uri']
-        if 'uri-type' in template_dict:
-            self.uri_type = template_dict['uri-type']
+        if 'uri-image' in template_dict:
+            self.uri_image = template_dict['uri-image']
+        if 'uri-image-type' in template_dict:
+            self.uri_image_type = template_dict['uri-image-type']
+        if 'uri-yang' in template_dict:
+            self.uri_yang = template_dict['uri-yang']
         self.memory_size = template_dict['memory-size']
         if 'root-file-system-size' in template_dict:
             self.root_file_system_size = template_dict['root-file-system-size']
@@ -58,10 +61,12 @@ class Template(object):
             template_dict['functional-capability'] = self.functional_capability
         if self.vnf_type is not None:            
             template_dict['vnf-type'] = self.vnf_type
-        if self.uri is not None:
-            template_dict['uri'] = self.uri
-        if self.uri_type is not None:
-            template_dict['uri-type'] = self.uri_type
+        if self.uri_image is not None:
+            template_dict['uri-image'] = self.uri_image
+        if self.uri_image_type is not None:
+            template_dict['uri-image-type'] = self.uri_image_type
+        if self.uri_yang is not None:
+            template_dict['uri-yang'] = self.uri_yang
         if self.memory_size is not None:    
             template_dict['memory-size'] = self.memory_size
         if self.root_file_system_size is not None:
