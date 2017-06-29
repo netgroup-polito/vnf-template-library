@@ -3,6 +3,7 @@
 This library models the VNF template used by the frog-orchestrator. Every VNF is described in terms of infrastructure and in terms of configuration. Going into details a template describes a VNF through the following parameters:
   * Type of the VNF
   * Image URI (not needed in some cases)
+  * YANG model URI (not needed in some cases)
   * Amount of memory
   * CPU requirements (platform type, number of cores etc)
   * List of ports
